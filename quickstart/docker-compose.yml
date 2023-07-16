@@ -1,0 +1,9 @@
+---
+version: "3.2"
+
+services:
+  relicate:
+    build: ../
+    container_name: relicate
+    restart: always
+    command: "/bin/sh -c '/app/run.sh'"
