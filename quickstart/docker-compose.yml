@@ -3,7 +3,9 @@ version: "3.2"
 
 services:
   relicate:
-    build: ../
+    build: ../relicate
     container_name: relicate
     restart: always
-    command: "/bin/sh -c '/app/run.sh'"
+    command: /code/relicate
+    ports:
+      - '127.0.0.1:3000:3000'
