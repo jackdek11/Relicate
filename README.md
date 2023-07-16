@@ -1,2 +1,2 @@
-# Go-websockets
-Containerized Go server to handle websocket connections and messages between containers
+# Relicate
+This application is designed to listen to database replication, and broadcast published database transactions via websocket connections to the application
