@@ -10,4 +10,4 @@ COPY go.sum /code/go.sum
 
 RUN go mod download
 
-RUN go build -o relicate .
+RUN go build -o repl .

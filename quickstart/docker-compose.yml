@@ -2,10 +2,10 @@
 version: "3.2"
 
 services:
-  relicate:
-    build: ../relicate
-    container_name: relicate
+  repl:
+    build: ../repl
+    container_name: repl
     restart: always
-    command: /code/relicate
+    command: /code/repl
     ports:
       - '127.0.0.1:3000:3000'

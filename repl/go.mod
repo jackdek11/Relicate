@@ -1,4 +1,4 @@
-module github.com/jackdek11/relicate
+module github.com/jackdek11/repl
 
 go 1.18
 
