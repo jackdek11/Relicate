@@ -9,3 +9,18 @@ services:
     command: /code/repl
     ports:
       - '127.0.0.1:3000:3000'
+
+  postgres:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_INITDB_ARGS: '--data-checksums'
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data/pgdata
+    command: postgres -c max_wal_senders=2 -c wal_level=logical -c max_replication_slots=2
