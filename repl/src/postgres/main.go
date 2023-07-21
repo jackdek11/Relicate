@@ -211,11 +211,3 @@ func handleInsertMessage(msg *pglogrepl.InsertMessage, relations map[uint32]*pgl
 	}
 	log.Printf("INSERT INTO %s.%s: %v", rel.Namespace, rel.RelationName, values)
 }
-
-func decodeTextColumnData(data []byte, dataType uint32) (interface{}, error) {
-	mi := pgtype.NewMap()
-	if dt, ok := mi.TypeForOID(dataType); ok {
-		return dt.Codec.DecodeValue(mi, dataType, pgtype.TextFormatCode, data)
-	}
-	return string(data), nil
-}
