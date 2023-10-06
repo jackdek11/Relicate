@@ -5,6 +5,8 @@
 *.so
 *.dylib
 .idea/
+pgdata/
+pgdata_replica/
 
 # Test binary, built with `go test -c`
 *.test
