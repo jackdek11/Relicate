@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   checkov:
     docker:
-      - image: python@sha256:{{ .Environment.PYTHON_CI_IMAGE}}
+      - image: python@sha256:$PYTHON_CI_IMAGE
     resource_class: small
     working_directory: ~/repo
     steps:
