@@ -28,17 +28,6 @@ jobs:
             cd ~/repo/
             checkov -d . --skip-check CKV_DOCKER_2
 
-  golang-lint:
-    machine:
-      image: ubuntu-2204:2022.07.1
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - run:
-          name: Install golint
-          command: |
-            sudo snap install golangci-lint
-
   git-leaks:
     machine:
       image: ubuntu-2204:2022.07.1
