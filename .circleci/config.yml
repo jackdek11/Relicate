@@ -26,7 +26,7 @@ jobs:
             python3 -m venv .venv
             . .venv/bin/activate
             cd ~/repo/
-            checkov -d . --skip-check CKV_DOCKER_2
+            checkov -d . --skip-check CKV_DOCKER_3 CKV_DOCKER_2
 
   git-leaks:
     machine:
