@@ -39,8 +39,37 @@ jobs:
           command: |
             docker run -v ~/repo:/path zricethezav/gitleaks:latest detect --source="/path" -v
 
+
+  publish-repl:
+    machine:
+      image: ubuntu-2204:2022.07.1
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: Build and tag repl image
+          command: |
+            cd ~/repo/repl
+            docker build -t repl:$CIRCLE_TAG .
+            docker tag repl:$CIRCLE_TAG repl:latest
+      - run:
+          name: Publish Docker Image to Docker Hub
+          command: |
+            echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" \
+              --password-stdin
+            docker push repl:$CIRCLE_TAG
+            docker push repl:latest
+
 workflows:
-  ci:
+  CI:
     jobs:
       - checkov
       - git-leaks
+  CD:
+    jobs:
+      - publish-repl:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^.*/
