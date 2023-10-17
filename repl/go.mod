@@ -3,7 +3,7 @@ module github.com/jackdek11/repl
 go 1.18
 
 require (
-	github.com/gofiber/fiber/v2 v2.49.2
+	github.com/gofiber/fiber/v2 v2.50.0
 	github.com/gofiber/websocket/v2 v2.2.1
 	github.com/jackc/pglogrepl v0.0.0-20230826184802-9ed16cb201f6
 	github.com/jackc/pgx/v5 v5.4.3
@@ -23,9 +23,9 @@ require (
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/savsgio/gotils v0.0.0-20230208104028-c358bd845dee // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
-	github.com/valyala/fasthttp v1.49.0 // indirect
+	github.com/valyala/fasthttp v1.50.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	golang.org/x/crypto v0.9.0 // indirect
-	golang.org/x/sys v0.12.0 // indirect
+	golang.org/x/sys v0.13.0 // indirect
 	golang.org/x/text v0.9.0 // indirect
 )
