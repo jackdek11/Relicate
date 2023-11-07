@@ -44,7 +44,7 @@ jobs:
       - run:
           name: Lint repo with yamllint
           command: |
-            yamllint -c .yamllint.conf .
+            yamllint .
 
   git-leaks:
     machine:
