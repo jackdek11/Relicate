@@ -28,6 +28,24 @@ jobs:
             cd ~/repo/
             checkov -d . --skip-check CKV_DOCKER_3,CKV_DOCKER_2,CKV_CIRCLECIPIPELINES_6
 
+  linting:
+    docker:
+      - image: python@sha256:$PYTHON_CI_IMAGE
+    resource_class: small
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: Install Ubuntu packages
+          command: |
+            export DEBIAN_FRONTEND='noninteractive'
+            apt-get update
+            apt-get install -y yamllint
+      - run:
+          name: Lint repo with yamllint
+          command: |
+            yamllint -c .yamllint.conf .
+
   git-leaks:
     machine:
       image: ubuntu-2204:2022.07.1
@@ -65,6 +83,7 @@ workflows:
     jobs:
       - checkov
       - git-leaks
+      - linting
   CD:
     jobs:
       - publish-repl:
