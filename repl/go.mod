@@ -6,7 +6,7 @@ require (
 	github.com/gofiber/fiber/v2 v2.52.1
 	github.com/gofiber/websocket/v2 v2.2.1
 	github.com/jackc/pglogrepl v0.0.0-20230826184802-9ed16cb201f6
-	github.com/jackc/pgx/v5 v5.4.3
+	github.com/jackc/pgx/v5 v5.5.4
 )
 
 require (
