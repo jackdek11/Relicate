@@ -7,6 +7,8 @@ services:
     container_name: repl
     restart: always
     command: /code/repl
+    networks:
+      - repl-network
     ports:
       - '127.0.0.1:3000:3000'
 
@@ -19,6 +21,8 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_INITDB_ARGS: '--data-checksums'
       PGDATA: /var/lib/postgresql/data/pgdata
+    networks:
+      - repl-network
     ports:
       - "127.0.0.1:5432:5432"
     volumes:
@@ -33,6 +37,8 @@ services:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       PGDATA: /var/lib/postgresql/data/pgdata
+    networks:
+      - repl-network
     ports:
       - "127.0.0.1:5433:5432"
     volumes:
@@ -40,3 +46,6 @@ services:
     depends_on:
       - postgres
     command: ["postgres", "-c", "primary_conninfo=host=postgres port=5432 user=user password=${POSTGRES_PASSWORD}", "-c", "restore_command='cp /var/lib/postgresql/data/pgdata/archive/%f %p'"]
+
+networks:
+  repl-network:
